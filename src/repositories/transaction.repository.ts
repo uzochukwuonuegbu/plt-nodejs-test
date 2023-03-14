@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
-import { Transaction, ITransactionRepository } from './types';
+import { Transaction } from '../types';
+import { ITransactionRepository } from './types';
 
 export class TransactionRepository implements ITransactionRepository {
     private readonly filePath: string;

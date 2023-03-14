@@ -1,6 +1,6 @@
 import { Stock } from './stock';
 import { Transactions } from './transactions';
-import { StockItem } from './types';
+import { StockItem } from './services/types';
 
 export class StockController {
   constructor(
