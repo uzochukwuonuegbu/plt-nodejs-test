@@ -8,3 +8,7 @@ export interface Transaction {
   qty: number;
   timestamp: Date;
 }
+
+export interface IStockService {
+  getStock(sku: string): Promise<{ sku: string, qty: number }>;
+}
