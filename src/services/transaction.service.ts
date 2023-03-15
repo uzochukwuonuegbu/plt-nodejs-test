@@ -14,7 +14,7 @@ export class TransactionService implements ITransactionService {
         return this.repository.getTransactionsBySku(sku);
     }
 
-    private txQtyReducer(transactions: Transaction[], stockQty: number = 0,): number {
+    private txQtyReducer(transactions: Transaction[], stockQty: number = 0): number {
         return transactions.reduce((quantity, transaction) => {
             if (transaction.type === TransactionType.INCREASE) {
                 return quantity + transaction.qty;
