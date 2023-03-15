@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { getUnixTime } from 'date-fns'
 import { TransactionRepository } from "../repositories/transaction.repository";
 import { Transaction, TransactionType } from "../types";
 import { ITransactionService } from "./types";
@@ -14,7 +14,7 @@ export class TransactionService implements ITransactionService {
         return this.repository.getTransactionsBySku(sku);
     }
 
-    private txQtyReducer(transactions: Transaction[], stockQty: number = 0): number {
+    public txQtyReducer(transactions: Transaction[], stockQty: number = 0): number {
         return transactions.reduce((quantity, transaction) => {
             if (transaction.type === TransactionType.INCREASE) {
                 return quantity + transaction.qty;
@@ -26,15 +26,15 @@ export class TransactionService implements ITransactionService {
         }, stockQty);
     }
 
-    public async getTransactionsSinceStockUpdate(sku: string, stockUpdatedAt: Date): Promise<Transaction[]> {
+    public async getTransactionsSinceStockUpdate(sku: string, stockUpdatedAt: string): Promise<Transaction[]> {
         const transactionsBySku = await this.getTransactionsBySku(sku);
-        const stockUnixTimestamp = moment(stockUpdatedAt).unix();
+        const stockUnixTimestamp = getUnixTime(new Date(stockUpdatedAt));
         return transactionsBySku
             // we want to make sure we only filter txs that occured since the stock was recorded in stock.json 
-            .filter((tx) => moment(tx.timestamp).unix() > stockUnixTimestamp)
+            .filter((tx) => getUnixTime(new Date(tx.timestamp)) > stockUnixTimestamp)
     }
 
-    public async getTransactionsQtySinceStockUpdate(sku: string, qty: number, stockUpdatedAt: Date): Promise<number> {
+    public async getTransactionsQtySinceStockUpdate(sku: string, qty: number, stockUpdatedAt: string): Promise<number> {
         const transactionsBySku = await this.getTransactionsSinceStockUpdate(sku, stockUpdatedAt);
         return this.txQtyReducer(transactionsBySku, qty);
     }
