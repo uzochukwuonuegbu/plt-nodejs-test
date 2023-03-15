@@ -7,11 +7,11 @@ export interface StockData {
 export enum TransactionType {
     INCREASE = 'increased',
     DECREASE = 'decreased',
-    UNKNOWN = 'unknown'
+    UNKNOWN = 'unknown',
 }
 export interface Transaction {
     sku: string;
     qty: number;
-    type: TransactionType
+    type: TransactionType;
     timestamp: string;
 }

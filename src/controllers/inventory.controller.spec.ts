@@ -16,7 +16,7 @@ const controller = new InventoryController(
 const mockStock = {
   sku: 'PLT123',
   qty: 10,
-  updatedAt: "2022-02-01T09:15:00Z",
+  updatedAt: '2022-02-01T09:15:00Z',
 };
 
 describe('InventoryController', () => {

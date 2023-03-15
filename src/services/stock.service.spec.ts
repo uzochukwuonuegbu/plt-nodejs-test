@@ -6,14 +6,14 @@ describe('StockService', () => {
         filePath: 'test-file-path',
         getStockBySku: jest.fn(),
       };
-      
+
     const service = new StockService(mockRepository as any);
     describe('getStockBySku', () => {
         test('should return the stock data for the given sku', async () => {
             const expectedStock: StockData = {
             sku: '123',
             qty: 10,
-            updatedAt: "2022-02-01T09:15:00Z",
+            updatedAt: '2022-02-01T09:15:00Z',
             };
             mockRepository.getStockBySku.mockResolvedValueOnce(expectedStock);
 

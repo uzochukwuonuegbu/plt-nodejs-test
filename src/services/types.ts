@@ -1,4 +1,4 @@
-import { StockData, Transaction } from "../types";
+import { StockData, Transaction } from '../types';
 
 export interface IStockService {
   getStockBySku(sku: string): Promise<StockData>;
