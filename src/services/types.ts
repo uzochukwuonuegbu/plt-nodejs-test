@@ -5,6 +5,6 @@ export interface IStockService {
 }
 
 export interface ITransactionService {
-  getTransactionsBySku(sku: string): Promise<Transaction[]>;
-  getTransactionQtyBySku(sku: string, stockCreatedAt: Date): Promise<number>;
+  getTransactionsBySku(sku: string, qty: number): Promise<Transaction[]>;
+  getTransactionQtyBySku(sku: string, qty: number, stockCreatedAt: Date): Promise<number>;
 }

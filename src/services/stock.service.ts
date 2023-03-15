@@ -11,7 +11,6 @@ export class StockService implements IStockService {
   
     async getStockBySku(sku: string): Promise<StockData> {
       const stock = await this.repository.getStockBySku(sku);
-      const qty = stock?.qty || 0;
-      return { ...stock, qty };
+      return stock;
     }
 }
