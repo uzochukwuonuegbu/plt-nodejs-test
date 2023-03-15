@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "tslint --fix -p tsconfig.json",
-    "test": "jest --coverage --config ./test/jest.config.json --runInBand --detectOpenHandles --forceExit",
-    "test:cov": "jest --config ./test/jest.config.json --runInBand --detectOpenHandles --coverage --forceExit",
-    "test:integration": "jest --config ./test/jest.config.integration.json --runInBand --forceExit"
+    "test": "jest --coverage --config ./test/jest.config.json --runInBand --detectOpenHandles --forceExit"
   },
   "author": "",
   "license": "ISC",
