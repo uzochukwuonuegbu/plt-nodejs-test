@@ -15,6 +15,7 @@ export class InventoryController {
             ? await this.transactionService.getTransactionsQtySinceStockUpdate(sku, qty, updatedAt)
             : await this.transactionService.getTransactionQtyBySku(sku, qty);
       
+          if (!currentStock) throw new Error(`No Stock or Transaction with SKU: ${sku}, Found`)
           if (currentStock < 0) {
             throw new Error(`Stock level is below 0, stock level: ${currentStock}`);
           }
