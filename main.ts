@@ -13,6 +13,5 @@ const transactionService = new TransactionService(transactionRepository);
 
 const stockCtrl = new InventoryController(stockService, transactionService);
 
-
 const sku = 'SKU003';
 stockCtrl.getStockLevel(sku).then((data) => console.log({data})).catch(err => console.log(err));
