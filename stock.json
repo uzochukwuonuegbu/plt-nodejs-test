@@ -1,10 +1,10 @@
 [
-    { "sku": "SKU001", "qty": 10 },
-    { "sku": "SKU002", "qty": 0 },
-    { "sku": "SKU003", "qty": 5 },
-    { "sku": "SKU004", "qty": 20 },
-    { "sku": "SKU005", "qty": 15 },
-    { "sku": "SKU006", "qty": 30 },
-    { "sku": "SKU007", "qty": 0 },
-    { "sku": "SKU008", "qty": 20 }
+    { "sku": "SKU001", "qty": 10, "updatedAt": "2022-02-01T09:15:00Z" },
+    { "sku": "SKU002", "qty": 0, "updatedAt": "2022-02-01T09:15:00Z" },
+    { "sku": "SKU003", "qty": 5, "updatedAt": "2022-02-01T09:15:00Z" },
+    { "sku": "SKU004", "qty": 20, "updatedAt": "2022-02-01T09:15:00Z" },
+    { "sku": "SKU005", "qty": 15, "updatedAt": "2022-02-01T09:15:00Z" },
+    { "sku": "SKU006", "qty": 30, "updatedAt": "2022-02-01T09:15:00Z" },
+    { "sku": "SKU007", "qty": 0, "updatedAt": "2022-02-01T09:15:00Z" },
+    { "sku": "SKU008", "qty": 20, "updatedAt": "2022-02-01T09:15:00Z" }
   ]

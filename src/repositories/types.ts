@@ -1,8 +1,10 @@
+import { StockData, Transaction } from "../types";
+
 export interface IStockRepository {
-    getStock(): Promise<{ [sku: string]: number }>;
+    getStockBySku(sku: string): Promise<StockData>;
 }
 
 
 export interface ITransactionRepository {
-    getTransactions(): Promise<{ sku: string, qty: number, timestamp: Date }[]>;
+    getTransactions(): Promise<Transaction[]>;
 }  

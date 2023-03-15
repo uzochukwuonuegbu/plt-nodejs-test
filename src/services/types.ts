@@ -1,10 +1,10 @@
-import { Transaction } from "../types";
+import { StockData, Transaction } from "../types";
 
 export interface IStockService {
-  getStock(sku: string): Promise<{ sku: string, qty: number }>;
+  getStockBySku(sku: string): Promise<StockData>;
 }
 
 export interface ITransactionService {
   getTransactionsBySku(sku: string): Promise<Transaction[]>;
-  getTransactionQtyBySku(sku: string): Promise<number>;
+  getTransactionQtyBySku(sku: string, stockCreatedAt: Date): Promise<number>;
 }

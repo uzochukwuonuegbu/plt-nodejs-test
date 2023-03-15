@@ -9,8 +9,10 @@ export class StockRepository implements IStockRepository {
       this.filePath = filePath;
     }
   
-    async getStock(): Promise<StockData> {
+    async getStockBySku(sku: string): Promise<StockData> {
       const data = await fs.readFile(this.filePath, 'utf-8');
-      return JSON.parse(data);
+      const parsedStocks: StockData[] = JSON.parse(data);
+      return parsedStocks
+      .find((stock) => stock.sku === sku) as StockData;
     }
   }

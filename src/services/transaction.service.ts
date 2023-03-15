@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { TransactionRepository } from "../repositories/transaction.repository";
 import { Transaction } from "../types";
 import { ITransactionService } from "./types";
@@ -10,14 +11,16 @@ export class TransactionService implements ITransactionService {
     }
   
     async getTransactionsBySku(sku: string): Promise<Transaction[]> {
-        const transactions = await this.repository.getTransactions();
-        return transactions
-            .filter((transaction) => transaction.sku === sku);
+        return this.repository.getTransactionsBySku(sku);
     }
 
-    async getTransactionQtyBySku(sku: string): Promise<number> {
+    async getTransactionQtyBySku(sku: string, stockCreatedAt: Date): Promise<number> {
         const transactionsBySku = await this.getTransactionsBySku(sku);
-        return transactionsBySku.map((transaction) => transaction.qty)
+        const stockUnixTimestamp = moment(stockCreatedAt).unix();
+        return transactionsBySku
+            // we are checking to make sure we only filter txs that occured since the stock was recorded in stock.json 
+            .filter((tx) => moment(tx.timestamp).unix() > stockUnixTimestamp)
+            .map((transaction) => transaction.qty)
             .reduce((acc, curr) => acc + curr, 0);
     }
   }

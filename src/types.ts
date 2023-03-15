@@ -1,5 +1,7 @@
 export interface StockData {
-    [sku: string]: number;
+    sku: string;
+    qty: number;
+    updatedAt: Date;
 }
 
 export interface Transaction {

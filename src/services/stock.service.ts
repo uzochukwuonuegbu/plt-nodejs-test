@@ -1,4 +1,5 @@
 import { StockRepository } from '../repositories/stock.repository';
+import { StockData } from '../types';
 import { IStockService } from './types';
 
 export class StockService implements IStockService {
@@ -8,9 +9,9 @@ export class StockService implements IStockService {
       this.repository = repository;
     }
   
-    async getStock(sku: string): Promise<{ sku: string, qty: number }> {
-      const stock = await this.repository.getStock();
-      const qty = stock[sku] || 0;
-      return { sku, qty };
+    async getStockBySku(sku: string): Promise<StockData> {
+      const stock = await this.repository.getStockBySku(sku);
+      const qty = stock?.qty || 0;
+      return { ...stock, qty };
     }
 }

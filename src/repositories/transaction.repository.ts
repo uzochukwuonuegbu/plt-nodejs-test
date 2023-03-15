@@ -13,4 +13,10 @@ export class TransactionRepository implements ITransactionRepository {
       const data = await fs.readFile(this.filePath, 'utf-8');
       return JSON.parse(data);
     }
+
+    async getTransactionsBySku(sku: string): Promise<Transaction[]> {
+      const data = await this.getTransactions();
+      return data
+      .filter((transaction) => transaction.sku === sku);
+    }
   }
